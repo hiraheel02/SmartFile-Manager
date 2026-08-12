@@ -1,480 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SmartFile Manager</title>
+  <title>SmartFile Manager - Download</title>
 
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-:root {
-  --bg: #f1f5f9;
-  --card: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --danger: #dc2626;
-  --success: #16a34a;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      min-height: 100vh;
+    }
 
-body.dark {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --border: #334155;
-}
+    .container {
+      width: min(1000px, 92%);
+      margin: auto;
+    }
 
-body {
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  transition: 0.25s;
-}
+    header {
+      padding: 25px 0;
+      border-bottom: 1px solid #334155;
+    }
 
-header {
-  background: #111827;
-  color: white;
-  padding: 22px;
-}
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.header-inner {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-}
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
 
-.logo h1 {
-  font-size: 27px;
-}
+    .badge {
+      background: #1e293b;
+      color: #93c5fd;
+      padding: 8px 13px;
+      border-radius: 20px;
+      font-size: 13px;
+    }
 
-.logo p {
-  color: #cbd5e1;
-  margin-top: 5px;
-}
+    .hero {
+      text-align: center;
+      padding: 90px 15px 70px;
+    }
 
-.theme-btn {
-  border: 1px solid #475569;
-  background: #1e293b;
-  color: white;
-  border-radius: 9px;
-  padding: 10px 14px;
-  cursor: pointer;
-}
+    .icon {
+      width: 90px;
+      height: 90px;
+      margin: auto;
+      border-radius: 22px;
+      background: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 45px;
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
+    }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 25px 18px;
-}
+    h1 {
+      font-size: clamp(38px, 7vw, 65px);
+      margin-top: 25px;
+    }
 
-.drop-zone {
-  background: var(--card);
-  border: 2px dashed #94a3b8;
-  border-radius: 18px;
-  padding: 45px 20px;
-  text-align: center;
-  transition: 0.2s;
-}
+    .subtitle {
+      max-width: 650px;
+      margin: 18px auto;
+      color: #94a3b8;
+      font-size: 18px;
+      line-height: 1.6;
+    }
 
-.drop-zone.dragging {
-  border-color: var(--primary);
-  background: #dbeafe;
-}
+    .download-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 16px 30px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 17px;
+      transition: 0.2s;
+    }
 
-.drop-icon {
-  font-size: 45px;
-  margin-bottom: 10px;
-}
+    .download-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
 
-.drop-zone h2 {
-  margin-bottom: 8px;
-}
+    .download-info {
+      margin-top: 12px;
+      color: #64748b;
+      font-size: 13px;
+    }
 
-.drop-zone p {
-  color: var(--muted);
-  margin-bottom: 20px;
-}
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      padding-bottom: 70px;
+    }
 
-.select-btn {
-  display: inline-block;
-  background: var(--primary);
-  color: white;
-  padding: 12px 22px;
-  border-radius: 9px;
-  cursor: pointer;
-  font-weight: bold;
-}
+    .feature {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 15px;
+      padding: 25px;
+    }
 
-.select-btn:hover {
-  background: var(--primary-hover);
-}
+    .feature-icon {
+      font-size: 28px;
+    }
 
-input[type="file"] {
-  display: none;
-}
+    .feature h3 {
+      margin-top: 15px;
+      margin-bottom: 8px;
+    }
 
-.toolbar {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 15px;
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+    .feature p {
+      color: #94a3b8;
+      line-height: 1.5;
+      font-size: 14px;
+    }
 
-.search {
-  flex: 1;
-  min-width: 200px;
-  padding: 11px 13px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-  outline: none;
-}
+    .requirements {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 50px;
+    }
 
-select {
-  padding: 11px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-}
+    .requirements h2 {
+      margin-bottom: 15px;
+    }
 
-.toolbar-btn {
-  border: none;
-  padding: 11px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
+    .requirements ul {
+      list-style: none;
+      color: #cbd5e1;
+      line-height: 2;
+    }
 
-.clear-btn {
-  background: var(--danger);
-  color: white;
-}
+    footer {
+      text-align: center;
+      border-top: 1px solid #334155;
+      padding: 25px;
+      color: #64748b;
+    }
 
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 20px;
-}
+    @media (max-width: 700px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
 
-.stat {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  padding: 18px;
-}
-
-.stat-title {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.stat-value {
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-.file-section {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  margin-top: 20px;
-  padding: 20px;
-}
-
-.file-section h2 {
-  margin-bottom: 15px;
-}
-
-.file-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.file-item {
-  border: 1px solid var(--border);
-  background: var(--bg);
-  border-radius: 12px;
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.file-icon {
-  width: 45px;
-  height: 45px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #dbeafe;
-  font-size: 22px;
-  flex-shrink: 0;
-}
-
-.file-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.file-name {
-  font-weight: bold;
-  word-break: break-word;
-}
-
-.file-details {
-  color: var(--muted);
-  font-size: 13px;
-  margin-top: 4px;
-}
-
-.file-actions {
-  display: flex;
-  gap: 7px;
-  flex-wrap: wrap;
-}
-
-.action {
-  border: none;
-  border-radius: 7px;
-  padding: 8px 11px;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.preview {
-  background: #7c3aed;
-}
-
-.download {
-  background: var(--success);
-}
-
-.delete {
-  background: var(--danger);
-}
-
-.empty {
-  text-align: center;
-  padding: 40px 15px;
-  color: var(--muted);
-}
-
-footer {
-  text-align: center;
-  color: var(--muted);
-  padding: 30px;
-}
-
-/* Modal */
-
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 1000;
-  padding: 20px;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal-box {
-  background: var(--card);
-  color: var(--text);
-  width: min(850px, 100%);
-  max-height: 90vh;
-  overflow: auto;
-  border-radius: 15px;
-  padding: 20px;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.close {
-  border: none;
-  background: var(--danger);
-  color: white;
-  border-radius: 7px;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.preview-image {
-  max-width: 100%;
-  max-height: 65vh;
-  display: block;
-  margin: auto;
-  border-radius: 10px;
-}
-
-.preview-text {
-  white-space: pre-wrap;
-  word-break: break-word;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 15px;
-  border-radius: 10px;
-  max-height: 65vh;
-  overflow: auto;
-}
-
-@media (max-width: 700px) {
-
-  .header-inner {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .stats {
-    grid-template-columns: 1fr;
-  }
-
-  .file-item {
-    align-items: flex-start;
-  }
-
-  .file-actions {
-    flex-direction: column;
-  }
-
-  .action {
-    width: 100%;
-  }
-}
-</style>
+      .hero {
+        padding-top: 60px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <div class="header-inner">
+  <div class="container nav">
 
     <div class="logo">
-      <h1>📁 SmartFile Manager</h1>
-      <p>Simple, private and smart file management</p>
+      📁 SmartFile Manager
     </div>
 
-    <button class="theme-btn" id="themeBtn">
-      🌙 Dark Mode
-    </button>
+    <div class="badge">
+      Windows App
+    </div>
 
   </div>
 </header>
 
-<main class="container">
 
-  <section class="drop-zone" id="dropZone">
+<main>
 
-    <div class="drop-icon">📂</div>
+  <section class="hero">
 
-    <h2>Add Your Files</h2>
+    <div class="icon">
+      📁
+    </div>
 
-    <p>
-      Drag & drop files here or select files from your device.
+    <h1>
+      SmartFile Manager
+    </h1>
+
+    <p class="subtitle">
+      A simple and powerful Windows file manager
+      designed to help you organize, search,
+      move and manage your files easily.
     </p>
 
-    <label class="select-btn" for="fileInput">
-      Select Files
-    </label>
+    <!-- DOWNLOAD BUTTON -->
 
-    <input
-      type="file"
-      id="fileInput"
-      multiple
+    <a
+      class="download-btn"
+      href="SmartFile-Manager-Setup.exe"
+      download
     >
+      ⬇ Download SmartFile Manager
+    </a>
 
-  </section>
-
-  <section class="toolbar">
-
-    <input
-      type="text"
-      id="searchInput"
-      class="search"
-      placeholder="🔎 Search files..."
-    >
-
-    <select id="sortSelect">
-      <option value="name">Sort: Name</option>
-      <option value="size">Sort: Size</option>
-      <option value="type">Sort: Type</option>
-      <option value="newest">Sort: Newest</option>
-    </select>
-
-    <button
-      class="toolbar-btn clear-btn"
-      id="clearBtn"
-    >
-      Clear All
-    </button>
-
-  </section>
-
-  <section class="stats">
-
-    <div class="stat">
-      <div class="stat-title">Files</div>
-      <div class="stat-value" id="fileCount">0</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-title">Total Size</div>
-      <div class="stat-value" id="totalSize">0 B</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-title">Images</div>
-      <div class="stat-value" id="imageCount">0</div>
+    <div class="download-info">
+      Windows • Free Download
     </div>
 
   </section>
 
-  <section class="file-section">
 
-    <h2>My Files</h2>
+  <section class="container features">
 
-    <div
-      id="fileList"
-      class="file-list"
-    >
+    <div class="feature">
 
-      <div class="empty">
-        📭<br><br>
-        No files selected yet.
+      <div class="feature-icon">
+        🔎
       </div>
+
+      <h3>
+        Fast Search
+      </h3>
+
+      <p>
+        Quickly find files and folders
+        on your computer.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        📂
+      </div>
+
+      <h3>
+        File Management
+      </h3>
+
+      <p>
+        Organize and manage your files
+        from one simple interface.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">
+        🗑️
+      </div>
+
+      <h3>
+        Easy Cleanup
+      </h3>
+
+      <p>
+        Find unnecessary files and
+        keep your storage organized.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="container">
+
+    <div class="requirements">
+
+      <h2>
+        System Requirements
+      </h2>
+
+      <ul>
+        <li>✓ Windows 10 or Windows 11</li>
+        <li>✓ 64-bit Windows recommended</li>
+        <li>✓ Internet connection for downloading</li>
+        <li>✓ No account required</li>
+      </ul>
 
     </div>
 
@@ -482,713 +301,11 @@ footer {
 
 </main>
 
+
 <footer>
-  SmartFile Manager • Your files stay in your browser
+  SmartFile Manager © 2026
 </footer>
 
-
-<!-- Preview Modal -->
-
-<div class="modal" id="previewModal">
-
-  <div class="modal-box">
-
-    <div class="modal-header">
-
-      <h2 id="modalTitle">
-        File Preview
-      </h2>
-
-      <button
-        class="close"
-        id="closeModal"
-      >
-        Close
-      </button>
-
-    </div>
-
-    <div id="previewContent"></div>
-
-  </div>
-
-</div>
-
-
-<script>
-
-const fileInput =
-  document.getElementById("fileInput");
-
-const fileList =
-  document.getElementById("fileList");
-
-const dropZone =
-  document.getElementById("dropZone");
-
-const searchInput =
-  document.getElementById("searchInput");
-
-const sortSelect =
-  document.getElementById("sortSelect");
-
-const clearBtn =
-  document.getElementById("clearBtn");
-
-const fileCount =
-  document.getElementById("fileCount");
-
-const totalSize =
-  document.getElementById("totalSize");
-
-const imageCount =
-  document.getElementById("imageCount");
-
-const themeBtn =
-  document.getElementById("themeBtn");
-
-const modal =
-  document.getElementById("previewModal");
-
-const modalTitle =
-  document.getElementById("modalTitle");
-
-const previewContent =
-  document.getElementById("previewContent");
-
-const closeModal =
-  document.getElementById("closeModal");
-
-let files = [];
-
-
-/* Add files */
-
-fileInput.addEventListener(
-  "change",
-  function() {
-
-    addFiles(
-      Array.from(this.files)
-    );
-
-    this.value = "";
-
-  }
-);
-
-
-/* Drag and Drop */
-
-dropZone.addEventListener(
-  "dragover",
-  function(event) {
-
-    event.preventDefault();
-
-    dropZone.classList.add("dragging");
-
-  }
-);
-
-dropZone.addEventListener(
-  "dragleave",
-  function() {
-
-    dropZone.classList.remove("dragging");
-
-  }
-);
-
-dropZone.addEventListener(
-  "drop",
-  function(event) {
-
-    event.preventDefault();
-
-    dropZone.classList.remove("dragging");
-
-    addFiles(
-      Array.from(event.dataTransfer.files)
-    );
-
-  }
-);
-
-
-/* Add files function */
-
-function addFiles(newFiles) {
-
-  files = [
-    ...files,
-    ...newFiles
-  ];
-
-  renderFiles();
-
-}
-
-
-/* Render files */
-
-function renderFiles() {
-
-  let visibleFiles = [...files];
-
-  const search =
-    searchInput.value
-      .trim()
-      .toLowerCase();
-
-  if (search) {
-
-    visibleFiles =
-      visibleFiles.filter(
-        file =>
-          file.name
-            .toLowerCase()
-            .includes(search)
-      );
-
-  }
-
-
-  /* Sorting */
-
-  const sort =
-    sortSelect.value;
-
-  if (sort === "name") {
-
-    visibleFiles.sort(
-      (a,b) =>
-        a.name.localeCompare(b.name)
-    );
-
-  }
-
-  if (sort === "size") {
-
-    visibleFiles.sort(
-      (a,b) =>
-        b.size - a.size
-    );
-
-  }
-
-  if (sort === "type") {
-
-    visibleFiles.sort(
-      (a,b) =>
-        a.type.localeCompare(b.type)
-    );
-
-  }
-
-  if (sort === "newest") {
-
-    visibleFiles.sort(
-      (a,b) =>
-        b.lastModified - a.lastModified
-    );
-
-  }
-
-
-  fileList.innerHTML = "";
-
-
-  if (visibleFiles.length === 0) {
-
-    fileList.innerHTML =
-      `<div class="empty">
-        📭<br><br>
-        No matching files.
-      </div>`;
-
-  }
-
-
-  visibleFiles.forEach(
-    file => {
-
-      const originalIndex =
-        files.indexOf(file);
-
-      const item =
-        document.createElement("div");
-
-      item.className =
-        "file-item";
-
-
-      const icon =
-        document.createElement("div");
-
-      icon.className =
-        "file-icon";
-
-      icon.textContent =
-        getFileIcon(file);
-
-
-      const info =
-        document.createElement("div");
-
-      info.className =
-        "file-info";
-
-
-      const name =
-        document.createElement("div");
-
-      name.className =
-        "file-name";
-
-      name.textContent =
-        file.name;
-
-
-      const details =
-        document.createElement("div");
-
-      details.className =
-        "file-details";
-
-      details.textContent =
-        `${formatSize(file.size)} • ${
-          file.type || "Unknown type"
-        }`;
-
-
-      info.appendChild(name);
-
-      info.appendChild(details);
-
-
-      const actions =
-        document.createElement("div");
-
-      actions.className =
-        "file-actions";
-
-
-      const previewBtn =
-        document.createElement("button");
-
-      previewBtn.className =
-        "action preview";
-
-      previewBtn.textContent =
-        "Preview";
-
-
-      previewBtn.addEventListener(
-        "click",
-        () => previewFile(file)
-      );
-
-
-      const downloadBtn =
-        document.createElement("button");
-
-      downloadBtn.className =
-        "action download";
-
-      downloadBtn.textContent =
-        "Download";
-
-
-      downloadBtn.addEventListener(
-        "click",
-        () => downloadFile(file)
-      );
-
-
-      const deleteBtn =
-        document.createElement("button");
-
-      deleteBtn.className =
-        "action delete";
-
-      deleteBtn.textContent =
-        "Delete";
-
-
-      deleteBtn.addEventListener(
-        "click",
-        () => {
-
-          files.splice(
-            originalIndex,
-            1
-          );
-
-          renderFiles();
-
-        }
-      );
-
-
-      actions.appendChild(
-        previewBtn
-      );
-
-      actions.appendChild(
-        downloadBtn
-      );
-
-      actions.appendChild(
-        deleteBtn
-      );
-
-
-      item.appendChild(icon);
-
-      item.appendChild(info);
-
-      item.appendChild(actions);
-
-      fileList.appendChild(item);
-
-    }
-  );
-
-
-  updateStats();
-
-}
-
-
-/* Statistics */
-
-function updateStats() {
-
-  fileCount.textContent =
-    files.length;
-
-  const total =
-    files.reduce(
-      (sum,file) =>
-        sum + file.size,
-      0
-    );
-
-  totalSize.textContent =
-    formatSize(total);
-
-  imageCount.textContent =
-    files.filter(
-      file =>
-        file.type.startsWith("image/")
-    ).length;
-
-}
-
-
-/* Download */
-
-function downloadFile(file) {
-
-  const url =
-    URL.createObjectURL(file);
-
-  const link =
-    document.createElement("a");
-
-  link.href =
-    url;
-
-  link.download =
-    file.name;
-
-  document.body.appendChild(link);
-
-  link.click();
-
-  link.remove();
-
-  URL.revokeObjectURL(url);
-
-}
-
-
-/* Preview */
-
-function previewFile(file) {
-
-  modal.classList.add("show");
-
-  modalTitle.textContent =
-    file.name;
-
-  previewContent.innerHTML = "";
-
-
-  /* Image preview */
-
-  if (
-    file.type.startsWith("image/")
-  ) {
-
-    const img =
-      document.createElement("img");
-
-    img.className =
-      "preview-image";
-
-    img.src =
-      URL.createObjectURL(file);
-
-    previewContent.appendChild(img);
-
-    return;
-
-  }
-
-
-  /* Text preview */
-
-  if (
-    file.type.startsWith("text/") ||
-    file.name.endsWith(".json") ||
-    file.name.endsWith(".js") ||
-    file.name.endsWith(".css") ||
-    file.name.endsWith(".html")
-  ) {
-
-    const reader =
-      new FileReader();
-
-    reader.onload =
-      function(event) {
-
-        const pre =
-          document.createElement("pre");
-
-        pre.className =
-          "preview-text";
-
-        pre.textContent =
-          event.target.result;
-
-        previewContent.appendChild(pre);
-
-      };
-
-    reader.readAsText(file);
-
-    return;
-
-  }
-
-
-  previewContent.innerHTML =
-    `<div class="empty">
-      👀 Preview is not available for this file type.
-      <br><br>
-      Use Download to open the file.
-    </div>`;
-
-}
-
-
-/* Close modal */
-
-closeModal.addEventListener(
-  "click",
-  function() {
-
-    modal.classList.remove("show");
-
-  }
-);
-
-
-modal.addEventListener(
-  "click",
-  function(event) {
-
-    if (
-      event.target === modal
-    ) {
-
-      modal.classList.remove(
-        "show"
-      );
-
-    }
-
-  }
-);
-
-
-/* Search */
-
-searchInput.addEventListener(
-  "input",
-  renderFiles
-);
-
-
-/* Sort */
-
-sortSelect.addEventListener(
-  "change",
-  renderFiles
-);
-
-
-/* Clear All */
-
-clearBtn.addEventListener(
-  "click",
-  function() {
-
-    if (files.length === 0) {
-      return;
-    }
-
-    const answer =
-      confirm(
-        "Are you sure you want to remove all files?"
-      );
-
-    if (answer) {
-
-      files = [];
-
-      renderFiles();
-
-    }
-
-  }
-);
-
-
-/* Dark mode */
-
-themeBtn.addEventListener(
-  "click",
-  function() {
-
-    document.body.classList.toggle(
-      "dark"
-    );
-
-    if (
-      document.body.classList.contains(
-        "dark"
-      )
-    ) {
-
-      themeBtn.textContent =
-        "☀️ Light Mode";
-
-    } else {
-
-      themeBtn.textContent =
-        "🌙 Dark Mode";
-
-    }
-
-  }
-);
-
-
-/* File icon */
-
-function getFileIcon(file) {
-
-  if (
-    file.type.startsWith("image/")
-  ) {
-    return "🖼️";
-  }
-
-  if (
-    file.type.startsWith("video/")
-  ) {
-    return "🎬";
-  }
-
-  if (
-    file.type.startsWith("audio/")
-  ) {
-    return "🎵";
-  }
-
-  if (
-    file.type.includes("pdf")
-  ) {
-    return "📕";
-  }
-
-  if (
-    file.type.includes("zip") ||
-    file.type.includes("rar")
-  ) {
-    return "🗜️";
-  }
-
-  if (
-    file.type.includes("word")
-  ) {
-    return "📘";
-  }
-
-  if (
-    file.type.includes("excel") ||
-    file.type.includes("spreadsheet")
-  ) {
-    return "📗";
-  }
-
-  if (
-    file.type.includes("text")
-  ) {
-    return "📄";
-  }
-
-  return "📁";
-
-}
-
-
-/* Format size */
-
-function formatSize(bytes) {
-
-  if (bytes === 0) {
-    return "0 B";
-  }
-
-  const units = [
-    "B",
-    "KB",
-    "MB",
-    "GB",
-    "TB"
-  ];
-
-  const i =
-    Math.floor(
-      Math.log(bytes) /
-      Math.log(1024)
-    );
-
-  return (
-    (bytes /
-      Math.pow(1024, i)
-    ).toFixed(2)
-    + " "
-    + units[i]
-  );
-
-}
-
-</script>
 
 </body>
 </html>
