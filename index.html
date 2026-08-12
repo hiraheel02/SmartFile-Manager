@@ -1,19 +1,28 @@
+# SmartFile Manager — GitHub Download Website
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SmartFile Manager — Windows File Manager</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Download SmartFile Manager, a simple and powerful Windows file management application.">
+          content="Download SmartFile Manager for Windows. A simple and powerful desktop file manager.">
+
+    <title>SmartFile Manager - Download</title>
 
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -23,15 +32,23 @@
             line-height: 1.6;
         }
 
+        /* HERO */
+
         .hero {
-            min-height: 620px;
+            min-height: 650px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 70px 20px;
+            padding: 60px 20px;
+
             background:
-                linear-gradient(135deg, #0f172a, #1e3a8a);
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #1d4ed8
+                );
+
             color: white;
         }
 
@@ -40,18 +57,25 @@
         }
 
         .logo {
-            width: 90px;
-            height: 90px;
+            width: 95px;
+            height: 95px;
+
             margin: 0 auto 25px;
-            border-radius: 22px;
+
+            border-radius: 24px;
+
             background: white;
+            color: #2563eb;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #2563eb;
-            font-size: 42px;
+
+            font-size: 40px;
             font-weight: bold;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.25);
         }
 
         h1 {
@@ -60,68 +84,102 @@
         }
 
         .subtitle {
-            font-size: 21px;
-            color: #dbeafe;
             max-width: 700px;
             margin: 0 auto 35px;
+
+            font-size: 20px;
+            color: #dbeafe;
         }
+
+        /* BUTTON */
 
         .download-button {
             display: inline-block;
-            padding: 17px 34px;
+
+            padding: 16px 32px;
+
             background: #2563eb;
             color: white;
+
             text-decoration: none;
+
             border-radius: 10px;
+
             font-size: 18px;
             font-weight: bold;
+
             transition: 0.2s;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.25);
         }
 
         .download-button:hover {
-            background: #1d4ed8;
+            background: #1e40af;
             transform: translateY(-2px);
+        }
+
+        .download-button:active {
+            transform: translateY(0);
         }
 
         .download-info {
             margin-top: 15px;
+
             font-size: 14px;
+
             color: #bfdbfe;
         }
 
+        /* GENERAL SECTION */
+
         .section {
             max-width: 1100px;
+
             margin: auto;
-            padding: 70px 20px;
+
+            padding: 75px 20px;
         }
 
         .section-title {
             text-align: center;
+
             font-size: 34px;
+
             margin-bottom: 45px;
         }
 
+        /* FEATURES */
+
         .features {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 25px;
         }
 
         .feature {
             background: white;
+
             padding: 30px;
+
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.07);
         }
 
         .feature-icon {
-            font-size: 34px;
+            font-size: 35px;
+
             margin-bottom: 15px;
         }
 
         .feature h3 {
             font-size: 20px;
+
             margin-bottom: 10px;
         }
 
@@ -129,54 +187,88 @@
             color: #64748b;
         }
 
+        /* ABOUT */
+
         .about {
             background: white;
+
             text-align: center;
         }
 
         .about p {
             max-width: 750px;
+
             margin: auto;
+
             color: #64748b;
+
             font-size: 17px;
         }
 
-        .download-section {
+        /* DOWNLOAD SECTION */
+
+        .download-area {
             text-align: center;
+
             background: #eff6ff;
+
             border-radius: 20px;
-            padding: 55px 20px;
+
+            padding: 60px 25px;
         }
 
-        .download-section h2 {
-            font-size: 32px;
+        .download-area h2 {
+            font-size: 34px;
+
             margin-bottom: 12px;
         }
 
-        .download-section p {
+        .download-area > p {
             color: #64748b;
-            margin-bottom: 25px;
+
+            margin-bottom: 28px;
         }
+
+        .windows-info {
+            margin-top: 18px;
+
+            font-size: 14px;
+
+            color: #64748b;
+        }
+
+        /* FOOTER */
 
         footer {
             text-align: center;
+
             padding: 30px 20px;
+
             background: #0f172a;
+
             color: #94a3b8;
+
             font-size: 14px;
         }
 
+        /* MOBILE */
+
         @media (max-width: 800px) {
+
             h1 {
                 font-size: 38px;
+            }
+
+            .subtitle {
+                font-size: 18px;
             }
 
             .features {
                 grid-template-columns: 1fr;
             }
 
-            .subtitle {
-                font-size: 18px;
+            .section-title {
+                font-size: 29px;
             }
         }
     </style>
@@ -184,111 +276,184 @@
 
 <body>
 
-    <!-- Hero -->
+
+    <!-- =========================
+         HERO / FIRST PAGE
+    ========================== -->
+
     <section class="hero">
+
         <div class="hero-content">
 
             <div class="logo">
                 SF
             </div>
 
-            <h1>SmartFile Manager</h1>
+            <h1>
+                SmartFile Manager
+            </h1>
 
             <p class="subtitle">
                 A simple, fast and powerful Windows file manager
                 designed to help you find and manage your files easily.
             </p>
 
-            <!--
-                IMPORTANT:
-                The real .exe installer does not exist yet.
 
-                After we create the installer, upload the .exe to your
-                GitHub repository and change the href below.
+            <!--
+                THIS BUTTON ONLY SCROLLS
+                TO THE DOWNLOAD SECTION.
             -->
 
-            <a class="download-button"
-               href="#download">
+            <a
+                class="download-button"
+                href="#download"
+            >
                 ↓ Download SmartFile Manager
             </a>
+
 
             <div class="download-info">
                 Windows • Free • Easy to use
             </div>
 
         </div>
+
     </section>
 
 
-    <!-- Features -->
+    <!-- =========================
+         FEATURES
+    ========================== -->
+
     <section class="section">
 
         <h2 class="section-title">
             Everything You Need
         </h2>
 
+
         <div class="features">
 
-            <div class="feature">
-                <div class="feature-icon">🔎</div>
-                <h3>Find Files Quickly</h3>
-                <p>
-                    Search your computer and locate files and folders
-                    quickly and easily.
-                </p>
-            </div>
 
             <div class="feature">
-                <div class="feature-icon">📁</div>
-                <h3>Manage Your Files</h3>
+
+                <div class="feature-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Find Files Quickly
+                </h3>
+
                 <p>
-                    Open folders and files directly from SmartFile Manager
-                    with a simple interface.
+                    Search your computer and locate
+                    files and folders quickly and easily.
                 </p>
+
             </div>
 
-            <div class="feature">
-                <div class="feature-icon">💻</div>
-                <h3>Built for Windows</h3>
-                <p>
-                    A native Windows desktop application designed for
-                    everyday file management.
-                </p>
-            </div>
 
             <div class="feature">
-                <div class="feature-icon">🗑️</div>
-                <h3>Recycle Bin Support</h3>
+
+                <div class="feature-icon">
+                    📁
+                </div>
+
+                <h3>
+                    Manage Your Files
+                </h3>
+
                 <p>
-                    Remove unwanted files while keeping your Windows
-                    workflow simple.
+                    Open folders and files directly
+                    from SmartFile Manager.
                 </p>
+
             </div>
 
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <h3>Simple & Fast</h3>
-                <p>
-                    A clean interface without unnecessary complexity.
-                </p>
-            </div>
 
             <div class="feature">
-                <div class="feature-icon">🔒</div>
-                <h3>Your Computer, Your Files</h3>
+
+                <div class="feature-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Built for Windows
+                </h3>
+
                 <p>
-                    SmartFile Manager is designed to work with the files
-                    already stored on your Windows computer.
+                    A Windows desktop application
+                    designed for everyday file management.
                 </p>
+
             </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🗑️
+                </div>
+
+                <h3>
+                    Recycle Bin Support
+                </h3>
+
+                <p>
+                    Remove unwanted files while keeping
+                    your Windows workflow simple.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Simple & Fast
+                </h3>
+
+                <p>
+                    A clean interface without
+                    unnecessary complexity.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Your Files
+                </h3>
+
+                <p>
+                    Work with files already stored
+                    on your Windows computer.
+                </p>
+
+            </div>
+
 
         </div>
 
     </section>
 
 
-    <!-- About -->
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
     <section class="about">
+
         <div class="section">
 
             <h2 class="section-title">
@@ -296,52 +461,92 @@
             </h2>
 
             <p>
-                SmartFile Manager is a Windows desktop application created
-                to make everyday file management easier. Find your files,
-                browse folders and manage your Windows storage from one
+                SmartFile Manager is a Windows desktop
+                application created to make everyday file
+                management easier. Find files, browse folders
+                and manage your Windows storage from one
                 straightforward application.
             </p>
 
         </div>
+
     </section>
 
 
-    <!-- Download -->
-    <section class="section" id="download">
+    <!-- =========================
+         DOWNLOAD
+    ========================== -->
 
-        <div class="download-section">
+    <section
+        class="section"
+        id="download"
+    >
 
-            <h2>Download SmartFile Manager</h2>
+        <div class="download-area">
+
+            <h2>
+                Download SmartFile Manager
+            </h2>
 
             <p>
-                Get the latest version of SmartFile Manager for Windows.
+                Get the latest version of SmartFile Manager
+                for Windows.
             </p>
+
 
             <!--
-                TEMPORARY BUTTON
+                IMPORTANT:
 
-                We will replace "#" with the real .exe download link
-                after the Windows installer has been created and uploaded.
+                This is the REAL download link.
+
+                When your installer is created, upload it
+                to the ROOT of your GitHub repository with
+                this exact filename:
+
+                SmartFile-Manager-Setup.exe
+
+                Repository:
+                hiraheel02/SmartFile-Manager
+
+                Then this button will download the installer.
             -->
 
-            <a class="download-button"
-               href="#">
-                Download for Windows
+            <a
+                class="download-button"
+                href="SmartFile-Manager-Setup.exe"
+                download="SmartFile-Manager-Setup.exe"
+            >
+                ⬇ Download for Windows
             </a>
 
-            <p style="margin-top: 18px; font-size: 14px;">
+
+            <div class="windows-info">
+
                 Windows installer (.exe)
-            </p>
+
+                <br>
+
+                Free download
+
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- Footer -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
-        © 2026 SmartFile Manager. All rights reserved.
+
+        © 2026 SmartFile Manager.
+        All rights reserved.
+
     </footer>
+
 
 </body>
 </html>
+```
