@@ -1,445 +1,748 @@
-# SmartFile Manager Download Website
-
-```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Download SmartFile Manager for Windows - a simple and powerful desktop file manager.">
+          content="Download SmartFile Manager for Windows. A simple and powerful desktop file manager.">
 
-    <title>SmartFile Manager | Windows File Manager</title>
+    <meta name="theme-color"
+          content="#2563eb">
+
+    <title>
+        SmartFile Manager - Windows File Manager
+    </title>
+
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
+
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
                 "Segoe UI",
+                Roboto,
                 Arial,
                 sans-serif;
 
             background: #f8fafc;
+
             color: #0f172a;
+
             line-height: 1.6;
+
         }
+
+
+        a {
+            text-decoration: none;
+        }
+
 
         /* =========================
-           NAVBAR
-        ========================== */
+           NAVIGATION
+        ========================= */
 
         nav {
+
             position: sticky;
+
             top: 0;
+
             z-index: 1000;
 
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
+            background:
+                rgba(255,255,255,0.96);
 
-            border-bottom: 1px solid #e2e8f0;
+            backdrop-filter: blur(12px);
+
+            border-bottom:
+                1px solid #e2e8f0;
+
         }
 
+
         .nav-container {
+
             max-width: 1150px;
-            margin: auto;
 
             height: 70px;
+
+            margin: auto;
+
             padding: 0 20px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
+
         }
+
 
         .brand {
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
 
-            font-size: 20px;
-            font-weight: 700;
             color: #0f172a;
 
-            text-decoration: none;
+            font-size: 20px;
+
+            font-weight: 700;
+
         }
 
-        .brand-icon {
-            width: 40px;
-            height: 40px;
 
-            border-radius: 10px;
+        .brand-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 11px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             background: #2563eb;
+
             color: white;
 
             font-size: 17px;
+
             font-weight: 800;
+
         }
 
-        nav a {
-            text-decoration: none;
-            color: #475569;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            color: #2563eb;
-        }
 
         .nav-links {
+
             display: flex;
+
             gap: 28px;
+
         }
+
+
+        .nav-links a {
+
+            color: #475569;
+
+            font-weight: 500;
+
+            transition: 0.2s;
+
+        }
+
+
+        .nav-links a:hover {
+
+            color: #2563eb;
+
+        }
+
 
         /* =========================
            HERO
-        ========================== */
+        ========================= */
 
         .hero {
-            background:
-                radial-gradient(
-                    circle at top right,
-                    #3b82f6 0%,
-                    #1d4ed8 35%,
-                    #0f172a 80%
-                );
 
             color: white;
 
-            padding: 110px 20px 120px;
-
             text-align: center;
+
+            padding: 105px 20px 115px;
+
+            background:
+
+                radial-gradient(
+                    circle at 80% 10%,
+                    #3b82f6 0,
+                    #1d4ed8 35%,
+                    #0f172a 82%
+                );
+
         }
+
 
         .hero-content {
+
             max-width: 900px;
+
             margin: auto;
+
         }
 
+
         .app-icon {
-            width: 100px;
-            height: 100px;
+
+            width: 105px;
+
+            height: 105px;
 
             margin: 0 auto 28px;
 
-            border-radius: 24px;
-
-            background: white;
-            color: #2563eb;
+            border-radius: 25px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
-            font-size: 34px;
+            background: white;
+
+            color: #2563eb;
+
+            font-size: 35px;
+
             font-weight: 800;
 
             box-shadow:
                 0 20px 50px rgba(0,0,0,0.30);
+
         }
 
+
         .hero h1 {
-            font-size: clamp(42px, 7vw, 68px);
-            line-height: 1.1;
+
+            font-size:
+                clamp(42px, 7vw, 68px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
 
             margin-bottom: 20px;
 
-            letter-spacing: -2px;
         }
 
+
         .hero-description {
-            max-width: 700px;
+
+            max-width: 720px;
+
             margin: auto;
 
             font-size: 20px;
+
             color: #dbeafe;
+
         }
 
+
         .hero-buttons {
+
             margin-top: 38px;
 
             display: flex;
+
             justify-content: center;
-            gap: 15px;
+
+            gap: 14px;
 
             flex-wrap: wrap;
+
         }
 
-        .btn {
+
+        .button {
+
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
-            min-width: 210px;
+            min-width: 220px;
 
             padding: 15px 25px;
 
             border-radius: 10px;
 
-            font-size: 16px;
             font-weight: 700;
 
-            text-decoration: none;
+            transition: 0.2s;
 
-            transition: 0.2s ease;
         }
 
-        .btn-primary {
+
+        .button-primary {
+
             background: white;
+
             color: #1d4ed8;
+
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
+
+        .button-primary:hover {
+
+            transform:
+                translateY(-2px);
 
             box-shadow:
-                0 12px 30px rgba(0,0,0,0.25);
+                0 12px 30px
+                rgba(0,0,0,0.25);
+
         }
 
-        .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.35);
+
+        .button-secondary {
+
             color: white;
-            background: rgba(255,255,255,0.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.35);
+
+            background:
+                rgba(255,255,255,0.08);
+
         }
 
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.15);
+
+        .button-secondary:hover {
+
+            background:
+                rgba(255,255,255,0.16);
+
         }
+
 
         .hero-note {
+
             margin-top: 18px;
 
             font-size: 14px;
+
             color: #bfdbfe;
+
         }
+
 
         /* =========================
            SECTIONS
-        ========================== */
+        ========================= */
 
-        .container {
+        .section {
+
             max-width: 1150px;
+
             margin: auto;
 
             padding: 85px 20px;
+
         }
 
-        .section-heading {
-            text-align: center;
+
+        .heading {
 
             max-width: 700px;
-            margin: 0 auto 50px;
+
+            margin:
+                0 auto 50px;
+
+            text-align: center;
+
         }
 
-        .section-heading h2 {
+
+        .heading h2 {
+
             font-size: 36px;
+
             margin-bottom: 12px;
+
         }
 
-        .section-heading p {
+
+        .heading p {
+
             color: #64748b;
+
         }
+
 
         /* =========================
            FEATURES
-        ========================== */
+        ========================= */
 
         .features {
+
             display: grid;
 
             grid-template-columns:
                 repeat(3, 1fr);
 
             gap: 22px;
+
         }
 
-        .card {
+
+        .feature {
+
             background: white;
 
-            border: 1px solid #e2e8f0;
+            border:
+                1px solid #e2e8f0;
 
             border-radius: 16px;
 
             padding: 30px;
 
             transition: 0.2s;
+
         }
 
-        .card:hover {
-            transform: translateY(-4px);
+
+        .feature:hover {
+
+            transform:
+                translateY(-4px);
 
             box-shadow:
-                0 15px 35px rgba(15,23,42,0.08);
+                0 15px 35px
+                rgba(15,23,42,0.08);
+
         }
 
-        .card-icon {
+
+        .feature-icon {
+
             width: 50px;
+
             height: 50px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin-bottom: 18px;
 
             border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
 
             background: #eff6ff;
 
             font-size: 24px;
 
-            margin-bottom: 20px;
         }
 
-        .card h3 {
+
+        .feature h3 {
+
             font-size: 19px;
-            margin-bottom: 9px;
+
+            margin-bottom: 8px;
+
         }
 
-        .card p {
+
+        .feature p {
+
             color: #64748b;
+
             font-size: 15px;
+
         }
+
 
         /* =========================
-           DOWNLOAD
-        ========================== */
+           ABOUT
+        ========================= */
 
-        .download-section {
-            padding: 20px;
+        .about {
+
+            background: white;
+
+            border-top:
+                1px solid #e2e8f0;
+
+            border-bottom:
+                1px solid #e2e8f0;
+
         }
 
-        .download-box {
-            max-width: 850px;
+
+        .about-content {
+
+            max-width: 760px;
 
             margin: auto;
 
             text-align: center;
 
+        }
+
+
+        .about-content p {
+
+            color: #64748b;
+
+            font-size: 17px;
+
+        }
+
+
+        /* =========================
+           DOWNLOAD
+        ========================= */
+
+        .download-area {
+
+            max-width: 850px;
+
+            margin: auto;
+
             padding: 65px 30px;
+
+            text-align: center;
 
             border-radius: 22px;
 
             background:
+
                 linear-gradient(
                     135deg,
                     #eff6ff,
                     #dbeafe
                 );
 
-            border: 1px solid #bfdbfe;
+            border:
+                1px solid #bfdbfe;
+
         }
 
-        .download-box h2 {
+
+        .download-area h2 {
+
             font-size: 36px;
+
             margin-bottom: 12px;
+
         }
 
-        .download-box p {
+
+        .download-area > p {
+
             color: #475569;
+
             margin-bottom: 28px;
+
         }
+
 
         .download-button {
+
             display: inline-flex;
 
             align-items: center;
+
             justify-content: center;
 
             gap: 10px;
 
-            padding: 16px 30px;
+            min-width: 270px;
+
+            padding: 17px 30px;
+
+            border: none;
 
             border-radius: 10px;
 
             background: #2563eb;
+
             color: white;
 
-            text-decoration: none;
-
             font-size: 17px;
+
             font-weight: 700;
 
+            cursor: pointer;
+
             box-shadow:
-                0 10px 25px rgba(37,99,235,0.25);
+                0 10px 25px
+                rgba(37,99,235,0.25);
 
             transition: 0.2s;
+
         }
+
 
         .download-button:hover {
+
             background: #1d4ed8;
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
+
         }
 
-        .download-details {
+
+        .download-button:disabled {
+
+            background: #94a3b8;
+
+            cursor: wait;
+
+            transform: none;
+
+            box-shadow: none;
+
+        }
+
+
+        .download-status {
+
+            min-height: 24px;
+
+            margin-top: 17px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .loading {
+
+            color: #475569;
+
+        }
+
+
+        .success {
+
+            color: #15803d;
+
+        }
+
+
+        .warning {
+
+            color: #b45309;
+
+        }
+
+
+        .error {
+
+            color: #dc2626;
+
+        }
+
+
+        .version {
+
+            display: none;
+
+            margin-top: 10px;
+
+            padding: 5px 13px;
+
+            border-radius: 999px;
+
+            background: #dbeafe;
+
+            color: #1d4ed8;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .release-link {
+
+            display: inline-block;
+
+            margin-top: 20px;
+
+            color: #2563eb;
+
+            font-weight: 600;
+
+        }
+
+
+        .release-link:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        .download-info {
+
             margin-top: 18px;
 
             color: #64748b;
 
             font-size: 13px;
+
         }
 
-        /* =========================
-           ABOUT
-        ========================== */
-
-        .about {
-            background: white;
-
-            border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .about-content {
-            max-width: 750px;
-            margin: auto;
-
-            text-align: center;
-        }
-
-        .about-content p {
-            color: #64748b;
-        }
 
         /* =========================
            FOOTER
-        ========================== */
+        ========================= */
 
         footer {
+
+            padding: 32px 20px;
+
+            text-align: center;
+
             background: #0f172a;
 
             color: #94a3b8;
 
-            text-align: center;
-
-            padding: 30px 20px;
-
             font-size: 14px;
+
         }
+
 
         footer strong {
+
             color: white;
+
         }
+
 
         /* =========================
            MOBILE
-        ========================== */
+        ========================= */
 
         @media (max-width: 800px) {
 
@@ -451,34 +754,47 @@
                 grid-template-columns: 1fr;
             }
 
-            .container {
-                padding: 65px 20px;
-            }
-
             .hero {
-                padding: 80px 20px 90px;
+                padding:
+                    80px 20px 90px;
             }
 
-            .section-heading h2,
-            .download-box h2 {
+            .section {
+                padding:
+                    65px 20px;
+            }
+
+            .heading h2,
+            .download-area h2 {
                 font-size: 30px;
             }
+
+            .hero-description {
+                font-size: 18px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
 
 <!-- =========================
      NAVIGATION
-========================== -->
+========================= -->
 
 <nav>
 
     <div class="nav-container">
 
-        <a href="#top" class="brand">
+        <a
+            href="#top"
+            class="brand"
+        >
 
             <span class="brand-icon">
                 SF
@@ -487,6 +803,7 @@
             SmartFile Manager
 
         </a>
+
 
         <div class="nav-links">
 
@@ -511,306 +828,780 @@
 
 <!-- =========================
      HERO
-========================== -->
+========================= -->
 
 <main id="top">
 
-    <section class="hero">
 
-        <div class="hero-content">
+<section class="hero">
 
-            <div class="app-icon">
-                SF
-            </div>
-
-            <h1>
-                SmartFile Manager
-            </h1>
-
-            <p class="hero-description">
-                A simple, fast and powerful Windows desktop
-                file manager for finding and managing your files.
-            </p>
-
-            <div class="hero-buttons">
-
-                <!--
-                    This button ONLY moves to the download section.
-                -->
-
-                <a
-                    href="#download"
-                    class="btn btn-primary"
-                >
-                    ↓ Download for Windows
-                </a>
-
-                <a
-                    href="#features"
-                    class="btn btn-secondary"
-                >
-                    Explore Features
-                </a>
-
-            </div>
-
-            <p class="hero-note">
-                Windows desktop application • Free
-            </p>
-
-        </div>
-
-    </section>
+    <div class="hero-content">
 
 
-    <!-- =========================
-         FEATURES
-    ========================== -->
-
-    <section
-        class="container"
-        id="features"
-    >
-
-        <div class="section-heading">
-
-            <h2>
-                Simple. Fast. Useful.
-            </h2>
-
-            <p>
-                SmartFile Manager gives you the essential
-                tools you need to work with files on Windows.
-            </p>
-
+        <div class="app-icon">
+            SF
         </div>
 
 
-        <div class="features">
+        <h1>
+            SmartFile Manager
+        </h1>
 
 
-            <div class="card">
+        <p class="hero-description">
 
-                <div class="card-icon">
-                    🔎
-                </div>
+            A simple, fast and powerful
+            Windows desktop file manager
+            for finding and managing your files.
 
-                <h3>
-                    Fast File Search
-                </h3>
+        </p>
 
-                <p>
-                    Quickly search your computer and find
-                    the files and folders you need.
-                </p>
 
-            </div>
+        <div class="hero-buttons">
 
-
-            <div class="card">
-
-                <div class="card-icon">
-                    📁
-                </div>
-
-                <h3>
-                    Browse Folders
-                </h3>
-
-                <p>
-                    Easily browse drives, folders and
-                    files from one convenient application.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    🖥️
-                </div>
-
-                <h3>
-                    Windows Desktop App
-                </h3>
-
-                <p>
-                    Designed to run directly on your
-                    Windows computer rather than inside a browser.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    🗑️
-                </div>
-
-                <h3>
-                    File Management
-                </h3>
-
-                <p>
-                    Manage files and remove unwanted items
-                    through your Windows workflow.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    ⚡
-                </div>
-
-                <h3>
-                    Lightweight
-                </h3>
-
-                <p>
-                    A straightforward interface focused on
-                    the tasks you actually need.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">
-                    🔒
-                </div>
-
-                <h3>
-                    Local Files
-                </h3>
-
-                <p>
-                    Work with files stored locally on
-                    your Windows computer.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-
-    <section
-        class="about"
-        id="about"
-    >
-
-        <div class="container">
-
-            <div class="about-content">
-
-                <div class="section-heading">
-
-                    <h2>
-                        About SmartFile Manager
-                    </h2>
-
-                </div>
-
-                <p>
-                    SmartFile Manager is a Windows desktop
-                    application built to make everyday file
-                    management easier. It provides a clean
-                    way to search, browse and manage files
-                    on your computer.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         DOWNLOAD
-    ========================== -->
-
-    <section
-        class="container download-section"
-        id="download"
-    >
-
-        <div class="download-box">
-
-            <h2>
-                Download SmartFile Manager
-            </h2>
-
-            <p>
-                Download the Windows installer and start
-                using SmartFile Manager on your computer.
-            </p>
-
-
-            <!--
-                ==================================================
-                REAL DOWNLOAD BUTTON
-                ==================================================
-
-                IMPORTANT:
-
-                Upload this file to the SAME location as index.html:
-
-                SmartFile-Manager-Setup.exe
-
-                Then this button downloads that file.
-
-                DO NOT change the filename unless you also
-                change the filename below.
-            -->
 
             <a
-                href="./SmartFile-Manager-Setup.exe"
-                class="download-button"
-                download
+                href="#download"
+                class="button button-primary"
             >
-                ⬇ Download SmartFile Manager
+                ↓ Download for Windows
             </a>
 
 
-            <div class="download-details">
-                Windows installer (.exe) • Free download
-            </div>
+            <a
+                href="#features"
+                class="button button-secondary"
+            >
+                Explore Features
+            </a>
+
 
         </div>
 
-    </section>
+
+        <p class="hero-note">
+
+            Windows desktop application
+            • Free
+
+        </p>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section
+    class="section"
+    id="features"
+>
+
+
+    <div class="heading">
+
+        <h2>
+            Everything You Need
+        </h2>
+
+        <p>
+
+            SmartFile Manager provides
+            the essential tools for
+            everyday Windows file management.
+
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔎
+            </div>
+
+            <h3>
+                Fast File Search
+            </h3>
+
+            <p>
+                Quickly find files and folders
+                on your Windows computer.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📁
+            </div>
+
+            <h3>
+                Browse Folders
+            </h3>
+
+            <p>
+                Browse drives, folders and files
+                from one convenient application.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🖥️
+            </div>
+
+            <h3>
+                Windows Desktop App
+            </h3>
+
+            <p>
+                SmartFile Manager runs directly
+                as a Windows desktop application.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🗑️
+            </div>
+
+            <h3>
+                File Management
+            </h3>
+
+            <p>
+                Manage your files using
+                a straightforward interface.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Lightweight
+            </h3>
+
+            <p>
+                Focused on useful file-management
+                features without unnecessary complexity.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <h3>
+                Local Files
+            </h3>
+
+            <p>
+                Work with files stored locally
+                on your Windows computer.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+    class="about"
+    id="about"
+>
+
+
+    <div class="section">
+
+        <div class="about-content">
+
+
+            <div class="heading">
+
+                <h2>
+                    About SmartFile Manager
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                SmartFile Manager is a Windows
+                desktop application designed to
+                make everyday file management easier.
+
+                Search, browse and manage your files
+                from one clean application.
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DOWNLOAD
+========================= -->
+
+<section
+    class="section"
+    id="download"
+>
+
+
+    <div class="download-area">
+
+
+        <h2>
+            Download SmartFile Manager
+        </h2>
+
+
+        <p>
+
+            Download the latest Windows
+            version of SmartFile Manager.
+
+        </p>
+
+
+        <!--
+            THE BUTTON STARTS DISABLED.
+
+            JavaScript checks GitHub Releases.
+
+            When it finds your real
+            "SmartFile Manager.exe",
+            it enables this button.
+        -->
+
+        <button
+            id="downloadButton"
+            class="download-button"
+            type="button"
+            disabled
+        >
+
+            ⏳ Checking latest release...
+
+        </button>
+
+
+        <div
+            id="downloadStatus"
+            class="download-status loading"
+        >
+
+            Connecting to GitHub...
+
+        </div>
+
+
+        <div
+            id="version"
+            class="version"
+        >
+        </div>
+
+
+        <div class="download-info">
+
+            Windows installer (.exe)
+
+            <br>
+
+            Latest version is selected automatically.
+
+        </div>
+
+
+        <a
+            id="releaseLink"
+            class="release-link"
+            href="https://github.com/hiraheel02/SmartFile-Manager/releases"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            View all releases on GitHub →
+
+        </a>
+
+
+    </div>
+
+</section>
+
 
 </main>
 
 
 <!-- =========================
      FOOTER
-========================== -->
+========================= -->
 
 <footer>
 
-    <strong>SmartFile Manager</strong>
+    <strong>
+        SmartFile Manager
+    </strong>
 
     <br>
 
-    © 2026 SmartFile Manager. All rights reserved.
+    © 2026 SmartFile Manager.
+    All rights reserved.
 
 </footer>
 
 
+<script>
+
+
+/*
+============================================================
+SMARTFILE MANAGER
+AUTOMATIC GITHUB DOWNLOAD SYSTEM
+============================================================
+
+Repository:
+
+hiraheel02/SmartFile-Manager
+
+The website checks the latest GitHub Release.
+
+It looks for:
+
+1. .exe
+2. .msix
+3. .msixbundle
+
+The .exe is preferred.
+
+============================================================
+*/
+
+
+const OWNER =
+    "hiraheel02";
+
+
+const REPOSITORY =
+    "SmartFile-Manager";
+
+
+const RELEASES_PAGE =
+    `https://github.com/${OWNER}/${REPOSITORY}/releases`;
+
+
+const API_URL =
+    `https://api.github.com/repos/${OWNER}/${REPOSITORY}/releases/latest`;
+
+
+const downloadButton =
+    document.getElementById(
+        "downloadButton"
+    );
+
+
+const downloadStatus =
+    document.getElementById(
+        "downloadStatus"
+    );
+
+
+const versionElement =
+    document.getElementById(
+        "version"
+    );
+
+
+const releaseLink =
+    document.getElementById(
+        "releaseLink"
+    );
+
+
+/*
+============================================================
+STATUS
+============================================================
+*/
+
+function showStatus(
+    message,
+    type
+) {
+
+    downloadStatus.textContent =
+        message;
+
+    downloadStatus.className =
+        "download-status " + type;
+
+}
+
+
+/*
+============================================================
+FIND WINDOWS INSTALLER
+============================================================
+*/
+
+function findInstaller(
+    assets
+) {
+
+    if (
+        !Array.isArray(assets)
+    ) {
+
+        return null;
+
+    }
+
+
+    /*
+    First priority:
+    Windows EXE
+    */
+
+    const exe =
+        assets.find(
+            asset => {
+
+                const name =
+                    asset.name.toLowerCase();
+
+                return (
+                    name.endsWith(".exe")
+                );
+
+            }
+        );
+
+
+    if (exe) {
+
+        return exe;
+
+    }
+
+
+    /*
+    Second priority:
+    MSIX
+    */
+
+    const msix =
+        assets.find(
+            asset => {
+
+                const name =
+                    asset.name.toLowerCase();
+
+                return (
+                    name.endsWith(".msix") ||
+                    name.endsWith(".msixbundle")
+                );
+
+            }
+        );
+
+
+    if (msix) {
+
+        return msix;
+
+    }
+
+
+    return null;
+
+}
+
+
+/*
+============================================================
+LOAD RELEASE
+============================================================
+*/
+
+async function loadRelease() {
+
+    try {
+
+
+        showStatus(
+            "Checking GitHub for the latest Windows installer...",
+            "loading"
+        );
+
+
+        const response =
+            await fetch(
+                API_URL,
+                {
+                    method: "GET",
+
+                    headers: {
+                        "Accept":
+                            "application/vnd.github+json"
+                    },
+
+                    cache: "no-store"
+                }
+            );
+
+
+        /*
+        No release exists.
+        */
+
+        if (
+            response.status === 404
+        ) {
+
+            downloadButton.disabled =
+                true;
+
+            downloadButton.textContent =
+                "Installer not available yet";
+
+            showStatus(
+                "No Windows release has been published yet.",
+                "warning"
+            );
+
+            return;
+
+        }
+
+
+        /*
+        Other GitHub errors.
+        */
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+                "GitHub error: " +
+                response.status
+            );
+
+        }
+
+
+        const release =
+            await response.json();
+
+
+        /*
+        Find installer.
+        */
+
+        const installer =
+            findInstaller(
+                release.assets
+            );
+
+
+        /*
+        Release exists,
+        but has no installer.
+        */
+
+        if (!installer) {
+
+            downloadButton.disabled =
+                true;
+
+            downloadButton.textContent =
+                "Installer not available";
+
+            showStatus(
+                "The latest release does not contain a Windows installer.",
+                "warning"
+            );
+
+            return;
+
+        }
+
+
+        /*
+        Everything is ready.
+        */
+
+        downloadButton.disabled =
+            false;
+
+
+        downloadButton.textContent =
+            "⬇ Download SmartFile Manager";
+
+
+        showStatus(
+            "Windows installer is ready.",
+            "success"
+        );
+
+
+        /*
+        Show version.
+        */
+
+        if (
+            release.tag_name
+        ) {
+
+            versionElement.textContent =
+                release.tag_name;
+
+            versionElement.style.display =
+                "inline-block";
+
+        }
+
+
+        /*
+        Update GitHub release link.
+        */
+
+        if (
+            release.html_url
+        ) {
+
+            releaseLink.href =
+                release.html_url;
+
+        }
+
+
+        /*
+        DOWNLOAD ACTION
+        */
+
+        downloadButton.onclick =
+            function () {
+
+                /*
+                Use GitHub's actual
+                browser download URL.
+
+                This avoids the old
+                "No file" problem
+                caused by a wrong filename.
+                */
+
+                window.location.href =
+                    installer.browser_download_url;
+
+            };
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(
+            "SmartFile Manager download error:",
+            error
+        );
+
+
+        /*
+        Do not leave the user
+        with a broken button.
+        */
+
+        downloadButton.disabled =
+            false;
+
+
+        downloadButton.textContent =
+            "Open GitHub Releases";
+
+
+        showStatus(
+            "Automatic download checking failed. Use GitHub Releases instead.",
+            "error"
+        );
+
+
+        /*
+        Backup action.
+        */
+
+        downloadButton.onclick =
+            function () {
+
+                window.open(
+                    RELEASES_PAGE,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+            };
+
+    }
+
+}
+
+
+/*
+============================================================
+START
+============================================================
+*/
+
+loadRelease();
+
+
+</script>
+
+
 </body>
+
 </html>
-```
