@@ -41,13 +41,17 @@
       padding: 20px;
     }
 
-    .upload-box {
+    .upload-box,
+    .files {
       background: white;
-      border: 2px dashed #94a3b8;
       border-radius: 16px;
-      padding: 35px;
-      text-align: center;
+      padding: 25px;
       margin-bottom: 25px;
+    }
+
+    .upload-box {
+      border: 2px dashed #94a3b8;
+      text-align: center;
     }
 
     .upload-box h2 {
@@ -77,16 +81,6 @@
       background: #1d4ed8;
     }
 
-    .files {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-    }
-
-    .files h2 {
-      margin-bottom: 15px;
-    }
-
     .file-list {
       display: flex;
       flex-direction: column;
@@ -97,6 +91,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 15px;
       padding: 14px;
       background: #f8fafc;
       border-radius: 10px;
@@ -107,10 +102,12 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
+      overflow: hidden;
     }
 
     .file-name {
       font-weight: bold;
+      word-break: break-word;
     }
 
     .file-size {
@@ -118,13 +115,32 @@
       font-size: 13px;
     }
 
+    .buttons {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .download-btn,
     .delete-btn {
-      background: #dc2626;
       color: white;
       border: none;
       padding: 8px 14px;
       border-radius: 7px;
       cursor: pointer;
+      font-weight: bold;
+    }
+
+    .download-btn {
+      background: #16a34a;
+    }
+
+    .download-btn:hover {
+      background: #15803d;
+    }
+
+    .delete-btn {
+      background: #dc2626;
     }
 
     .delete-btn:hover {
@@ -141,6 +157,22 @@
       text-align: center;
       padding: 25px;
       color: #64748b;
+    }
+
+    @media (max-width: 600px) {
+      .file-item {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .buttons {
+        width: 100%;
+      }
+
+      .download-btn,
+      .delete-btn {
+        flex: 1;
+      }
     }
   </style>
 </head>
@@ -197,6 +229,8 @@
       files = [...files, ...selectedFiles];
 
       displayFiles();
+
+      fileInput.value = "";
     });
 
     function displayFiles() {
@@ -227,6 +261,27 @@
         info.appendChild(name);
         info.appendChild(size);
 
+        const buttons = document.createElement("div");
+        buttons.className = "buttons";
+
+        const downloadButton = document.createElement("button");
+        downloadButton.className = "download-btn";
+        downloadButton.textContent = "Download";
+
+        downloadButton.addEventListener("click", function () {
+          const url = URL.createObjectURL(file);
+
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = file.name;
+
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+
+          URL.revokeObjectURL(url);
+        });
+
         const deleteButton = document.createElement("button");
         deleteButton.className = "delete-btn";
         deleteButton.textContent = "Delete";
@@ -236,8 +291,11 @@
           displayFiles();
         });
 
+        buttons.appendChild(downloadButton);
+        buttons.appendChild(deleteButton);
+
         item.appendChild(info);
-        item.appendChild(deleteButton);
+        item.appendChild(buttons);
 
         fileList.appendChild(item);
       });
@@ -248,7 +306,7 @@
 
       const units = [
         "Bytes",
-               "KB",
+        "KB",
         "MB",
         "GB"
       ];
